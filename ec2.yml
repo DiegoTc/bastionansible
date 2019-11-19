@@ -5,5 +5,3 @@
   become: yes
   roles:
     - setupfordwarding
-  vars:
-    project_name: monkey
