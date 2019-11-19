@@ -1,0 +1,20 @@
+---
+- name: Creates ssh directory
+  file:
+    path: ~/.ssh/
+    state: directory
+
+- name: Create ssh config file in local computer
+  copy:
+    dest: ~/.ssh/config
+    content: |
+       Host 10.*.*.*
+       User ubuntu
+       IdentityFile XXXXX.pem
+       StrictHostKeyChecking=no
+       ProxyCommand ssh -q -W %h:%p {{ lookup('env', 'IP') }}
+       Host {{ lookup('env', 'IP') }}
+       User ubuntu
+       StrictHostKeyChecking=no
+       IdentityFile XXXXX.pem
+       ForwardAgent yes

@@ -1,0 +1,9 @@
+- name: configurations to bastion host
+  hosts: type_t2_small
+  gather_facts: no
+  remote_user: ubuntu
+  become: yes
+  roles:
+    - setupfordwarding
+  vars:
+    project_name: monkey

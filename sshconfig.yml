@@ -1,0 +1,9 @@
+- name: Adding ~/.ssh/config
+  hosts: localhost
+  gather_facts: no
+  remote_user: ubuntu
+  become: yes
+  roles:
+    - ssh
+  vars:
+    project_name: monkey
